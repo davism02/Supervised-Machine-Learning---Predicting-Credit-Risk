@@ -1,14 +1,12 @@
 # Supervised Machine Learning Homework - Predicting Credit Risk
 
-In this assignment, you will be building a machine learning model that attempts to predict whether a loan from LendingClub will become high risk or not. 
+In this assignment, I built a machine learning model that attempts to predict whether a loan from LendingClub is high risk or not.
 
 ## Background
 
 LendingClub is a peer-to-peer lending services company that allows individual investors to partially fund personal loans as well as buy and sell notes backing the loans on a secondary market. LendingClub offers their previous data through an API.
 
 You will be using this data to create machine learning models to classify the risk level of given loans. Specifically, you will be comparing the Logistic Regression model and Random Forest Classifier.
-
-## Instructions
 
 ### Retrieve the data
 
@@ -17,44 +15,43 @@ In the `Generator` folder in `Resources`, there is a [GenerateData.ipynb](/Resou
 * `2019loans.csv`
 * `2020Q1loans.csv`
 
-You will be using an entire year's worth of data (2019) to predict the credit risk of loans from the first quarter of the next year (2020).
+I used the entire year's worth of data (2019) to predict the credit risk of loans from the first quarter of the next year (2020).
 
 Note: these two CSVs have been undersampled to give an even number of high risk and low risk loans. In the original dataset, only 2.2% of loans are categorized as high risk. To get a truly accurate model, special techniques need to be used on imbalanced data. Undersampling is one of those techniques. Oversampling and SMOTE (Synthetic Minority Over-sampling Technique) are other techniques that are also used.
 
 ## Preprocessing: Convert categorical data to numeric
 
-Create a training set from the 2019 loans using `pd.get_dummies()` to convert the categorical data to numeric columns. Similarly, create a testing set from the 2020 loans, also using `pd.get_dummies()`. Note! There are categories in the 2019 loans that do not exist in the testing set. If you fit a model to the training set and try to score it on the testing set as is, you will get an error. You need to use code to fill in the missing categories in the testing set. 
+Create a training set from the 2019 loans using `pd.get_dummies()` to convert the categorical data to numeric columns. Similarly, create a testing set from the 2020 loans, also using `pd.get_dummies()`. Note! There are categories in the 2019 loans that do not exist in the testing set. If you fit a model to the training set and try to score it on the testing set as is, you will get an error. I used code to fill in the missing categories in the testing set. 
 
 ## Consider the models
 
-You will be creating and comparing two models on this data: a logistic regression, and a random forests classifier. Before you create, fit, and score the models, make a prediction as to which model you think will perform better. You do not need to be correct! Write down (in markdown cells in your Jupyter Notebook or in a separate document) your prediction, and provide justification for your educated guess.
+I created and compared two models on this data: a logistic regression, and a random forests classifier. Before I created, fit, and scored the models, made a prediction as Random Forrest would perform better for this data.
 
 ## Fit a LogisticRegression model and RandomForestClassifier model
 
-My initial thaoughs was that random forrest classier would give a better prediction.
-Result of the analysis showed for unscaled data
-Logistic regression is lowest  for unscaled data for both training and testing data.
-Logistic Regression unscaled data
-Training Data Score: 0.6980295566502464
-Testing Data Score: 0.5776265418970651
+# Analysis for Logistic Regression, both the training and the testing score increased for the scaled data over the unscaled data.
+    Logistic regression unscaled data:
+        Training Score: 0.6980295566502464
+        Testing  Score: 0.5776265418970651
+    
+    Logistic regression with scaled data is
+        Training Score: 0.7079638752052545 
+        Testing  Score: 0.7679710761378137
 
-## Revisit the Preprocessing: Scale the data
 
-The data going into these models was never scaled, an important step in preprocessing. Use `StandardScaler` to scale the training and testing sets. Before re-fitting the LogisticRegression and RandomForestClassifier models on the scaled data, make another prediction about how you think scaling will affect the accuracy of the models. Write your predictions down and provide justification.
+# For the analysis of Random Forest Classifier, there was not much difference between unscaled and scaled testing data.
+    Random Forest Classifier unscaled data:
+        Training Score: 1.0
+        Testing Score: 0.647809442790302
 
-Logistic regression with scaled data is slightly higher than logistic regression with unscaled data for both training and testing data.
+    Random Forest Classifier model scores are:
+        Training Score: 1.0 
+        esting Score: 0.6401531263292216
 
-Training Data Score: 0.7079638752052545 Testing Data Score: 0.7679710761378137
-
-Random Forest Classifier model is in max for training data as unscaled data, still pretty low for testing data as unscaled data.
-
-Training Score: 1.0 Testing Score: 0.6401531263292216
-
-Fit and score the LogisticRegression and RandomForestClassifier models on the scaled data. How do the model scores compare to each other, and to the previous results on unscaled data? How does this compare to your prediction? Write down your results and thoughts.
+# Overall the Logistic Regression was a better predictor over the Random Forrest for both scaled and unscaled testing data.¶
 
 ## Rubric
 
-[Unit 19 - Supervised Machine Learning Homework Rubric](https://docs.google.com/document/d/1f_eN3TYiGqlaWL9Utk5U-P491OeWqFSiv7FIlI_d4_U/edit?usp=sharing)
 
 ### References
 
